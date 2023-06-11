@@ -24,3 +24,11 @@ service docker start
 ```
 ## Права доступа к некоторым файлам Linux:
 * ``` id_rsa chmod 0600 ```
+## QtCreator c маленькими шрифтами и кнопками на мониторах c высоким разрешением (плюс мелкопиксельные мониторы):
+Для этого надо в .xprofile поставить QT_SCALE_FACTOR > 2 и поиграть со значением, можно создать себе скрипт:
+```
+#!/bin/bash
+echo "Starting QtCreator"
+export QT_SCALE_FACTOR=2.5
+qtcreator
+```
