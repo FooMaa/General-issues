@@ -3,6 +3,7 @@
 * gitgui
 * doxigen
 * htop
+* ethtool
 # Помощь:
 ## Почему не подключается ПО к БД postgres в Astra Linux:
 Файл /etc/parsec/mswitch.conf, параметр zero_if_notfound установить в yes.
@@ -31,4 +32,17 @@ service docker start
 echo "Starting QtCreator"
 export QT_SCALE_FACTOR=2.5
 qtcreator
+```
+## Включить дистанционно ПК:
+Поставить в BIOS в разделе Power переключатель Wake on Lan в состояние enable, прописать в Linux:
+```
+ethtool -s eth0 wol g
+```
+Чтоб со сторонней машины запустить:
+```
+wakeonlan 00:0e:2e:b9:cb:ad
+```
+Чтоб узнать MAC-адрес у сетевой карты, можно восользоваться:
+```
+ip a
 ```
