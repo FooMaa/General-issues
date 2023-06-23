@@ -1,9 +1,10 @@
 # Программы:
-* kdiff
-* gitgui
-* doxigen
-* htop
-* ethtool
+* kdiff (для разрешения конфликтов на git)
+* gitgui (удобно делать commit и push в git)
+* doxigen (для документации)
+* htop (диспетчер задач)
+* ethtool (глубокая работа с сетевыми интерфейсами)
+* ffmpeg (запись видео с экрана из bash)
 # Помощь:
 ## Почему не подключается ПО к БД postgres в Astra Linux:
 Файл /etc/parsec/mswitch.conf, параметр zero_if_notfound установить в yes.
