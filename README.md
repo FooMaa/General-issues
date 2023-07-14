@@ -165,7 +165,7 @@ target=/root/mint
 # OS - операционная система
 OS=ubuntu
 # repo - путь до репозитория, склонированного с поставляемого диска
-repo = http://$OS.mirror.vu.lt/$OS/
+repo=http://$OS.mirror.vu.lt/$OS/
 ```
 Создадим копию roots:
 ```bash
