@@ -66,11 +66,12 @@ dns-nameservers: 196.120.2.1
 dns-nameservers: 196.120.2.15
 ```
 ## Создать docker контейнер на базе vmdk:
-Установить пакеты:
+Установить пакеты и добавить себя в группу docker (в новых версиях docker.io может быть заменен на docker-ce):
 ```bash
 sudo apt-get install docker.io
 sudo apt-get install cgroupfs-mount
 sudo apt-get install qemu-utils
+sudo usermod -a -G docker $(whoami)
 ```
 Важно, чтоб установить контейнер, должна уже быть утсановлена вирутальная машина vmdk, для докера важно наличие файловой системы.
 Затем нужно перейти в папку с вирутальными машинами и преобразовать vmdk в необработанный файл raw:
@@ -145,10 +146,59 @@ sudo usermod -aG docker $(whoami)
 sudo service docker start
 sudo dockerd --debug
 sudo nano /etc/default/grub
-#Добавить в переменную GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
+# Добавить в переменную GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
 sudo update-grub
 sudo service docker stop
 sudo cgroupfs-umount
 sudo cgroupfs-mount
 sudo service docker start
+```
+## Создать docker контейнер уже имеющейся системы:
+Для систем linux производных от debian, надо поставить debootstrap, он будет копировать базывый образ дистрибутива Debian  в нужный каталог:
+```bash
+sudo apt-get install debootstrap
+```
+Нужно создать rootfs для запуска с другого раздела, укажем переменные окружения:
+```bash
+# target - путь куда будем копировать rootfs
+target=/root/mint
+# OS - операционная система
+OS=ubuntu
+# repo - путь до репозитория, склонированного с поставляемого диска
+repo = http://$OS.mirror.vu.lt/$OS/
+```
+Создадим копию roots:
+```bash
+debootstrap --components=main,contrib,non-free --arch=amd64 wheezy "$target" "$repo"
+# debootstrap 1.7_x86-64 astra-folder https://dl.astralinux.ru/astra/stable/1.7_x86-64/repository-main/
+#1.7_x86-64 — имя скрипта из каталога /usr/share/debootstrap/scripts для установки системы. Прежде чем запускать команду, стоит пройти по данному каталогу и найти имя нужного вам скрипта. Это одна из причин, почему стоит создавать docker-образ в той же системе — нужного нам скрипта может не оказаться (маловероятно, что скрипт для Astra Linux будет в Rocky Linux).
+#astra-folder — имя локального каталога, куда будет установлена система.
+#https://dl.astralinux.ru/astra/stable/1.7_x86-64/repository-main — путь к репозиторию, откуда нужно взять базовые пакеты. Данная опция необязательна, однако в случае с Astra Linux, debootstrap пытается найти пакеты в репозиториях debian, что приводит к ошибке.
+# https://www.dmosk.ru/miniinstruktions.php?mini=docker-base-image
+```
+Затем нужно монтировать блочные устройства (необязательно):
+```bash
+mount --bind /dev "$target"/dev
+mount --bind /dev/pts "$target"/dev/pts
+mount --bind /proc "$target"/proc
+mount --bind /sys "$target"/sys
+```
+Chroot - инструмент для изменения корневого каталога диска для запущенного и дочерних процессов. Программа, которая запускается из такого окружения не получит доступ к файлам вне нового корневого каталога. Это новое окружение называется chroot jail. Запускаем команды для этого:
+```bash
+chroot "$target"
+```
+Там можно поставить нужные пакеты, приложения, почистить что-то.
+Размонтируем блочные устройства (обязательно только, если монтировали):
+```bash
+umount "$target"/dev
+umount "$target"/dev/pts
+umount "$target"/proc
+umount "$target"/sys
+```
+Далее надо отправить в архив всё собранное:
+```bash
+cd "$target"
+tar -cf ../mint.tar *
+# Следующая команда сразу создаст контейнер docker
+# tar -C mint -c . | docker import - mint19:base
 ```
