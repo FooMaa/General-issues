@@ -209,9 +209,9 @@ cat mint.tar | docker import - mint
 ## Docker полезные команды:
 ```bash
 # Запуллить удаленный образ docker по $URL контейнера в виде <репозиторий>:<название>
-docker pull $URL
+docker pull <репозиторий>:<название>
 # Запустить в интерактивном режиме контейнер
-docker run -it $URL /bin/bash
+docker run -it <репозиторий>:<название> /bin/bash
 # Когда поменяли что-то жмём Ctrl+D и надо закоммитить
 docker ps -a
 # Там будет сводная информация по контейнерам. Нужен первый столбец CONTAINER ID
