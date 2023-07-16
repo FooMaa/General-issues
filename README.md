@@ -119,6 +119,9 @@ sudo mount /dev/loop0p1 ./mnt
 ```
 Важно выбирать именно раздел loop с файловой системой. Возможны ошибки при монтировании, при ошибке следует сделать:
 ```bash
+# Удалим loop девайс
+sudo losetup -d /dev/loop0
+# Примонтируем с разбором разделов
 sudo losetup -P /dev/loop0 mint.raw
 # sudo partx -u делать уже не стоит, опция "-P" сама разберет разделы
 sudo mount /dev/loop0p5 mnt
