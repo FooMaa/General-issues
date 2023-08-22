@@ -2,7 +2,6 @@
 ## Linux
 * [Программы](https://github.com/FooMaa/General-issues/blob/main/linux/soft.md)
 * [Почему не подключается ПО к БД postgres в Astra Linux](https://github.com/FooMaa/General-issues/blob/main/linux/postgres-and-astra.md)
-* [Git submodules](https://github.com/FooMaa/General-issues/blob/main/git/make-submodule.md)
 * [Права доступа к некоторым файлам Linux](https://github.com/FooMaa/General-issues/blob/main/linux/access-linux.md)
 * [QtCreator c маленькими шрифтами и кнопками на мониторах c высоким разрешением (или мелкопиксельные мониторы)](https://github.com/FooMaa/General-issues/blob/main/linux/small-qt-creator.md)
 * [Включить дистанционно ПК](https://github.com/FooMaa/General-issues/blob/main/linux/wake-remote-pc.md)
