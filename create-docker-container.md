@@ -81,7 +81,7 @@ sudo docker images
 sudo docker run -it 12b132b1f213f /bin/bash
 sudo docker run -it mint:1.0 /bin/bash
 ```
-В процессе возникают ошибки, что docker демон не стартует, можно посмотреть информацию командой что-то типа ```bash sudo service docker start --debug ```.
+В процессе возникают ошибки, что docker демон не стартует, можно посмотреть информацию командой что-то типа ``` sudo service docker start --debug ```.
 Если проблема в cgroup, то пути решения следующие:
 ```bash
 sudo groupadd docker
