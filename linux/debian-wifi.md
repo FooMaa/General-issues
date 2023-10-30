@@ -1,4 +1,4 @@
-Почему Debian не видит Wi-Fi адаптер после установки:
+##Почему Debian не видит Wi-Fi адаптер после установки:
 Привести файл /etc/network/interfaces к виду:
 ``` bash
 # This file describes the network interfaces available on your system
