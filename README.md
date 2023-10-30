@@ -9,6 +9,7 @@
 * [Если в Linux при автозапуске не работают X](https://github.com/FooMaa/General-issues/blob/main/linux/autorun-gui-linux.md)
 * [Создать статический IP](https://github.com/FooMaa/General-issues/blob/main/linux/make-static-ip.md)
 * [Очистить данные о подключениях USB](https://github.com/FooMaa/General-issues/blob/main/linux/clean-usb.md)
+* [Почему Debian не видит Wi-Fi адаптер после установки](https://github.com/FooMaa/General-issues/blob/main/linux/debian-wifi.md)
 ## Git
 * [Git submodules](https://github.com/FooMaa/General-issues/blob/main/git/make-submodule.md)
 ## Docker
