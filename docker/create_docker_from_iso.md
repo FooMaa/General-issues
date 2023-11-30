@@ -3,7 +3,11 @@
 ``` bash
 sudo mount -o loop $PATH/$FILE.iso /mnt
 ```
+Ищем файловую систему и архивируем её:
+``` bash
+sudo tar -czvf filesystem.tar.gz filesystem
+```
 Затем создаем контейнер:
 ``` bash
-sudo tar -C /mnt -c . | sudo docker import - path/name:1.0
+sudo docker import filesystem.tar.gz sys:1.0
 ```
