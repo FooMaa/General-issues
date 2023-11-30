@@ -3,11 +3,20 @@
 ``` bash
 sudo mount -o loop $PATH/$FILE.iso /mnt
 ```
-Ищем файловую систему и архивируем её:
+Ищем файловую систему и выбираем её:
 ``` bash
-sudo tar -czvf filesystem.tar.gz filesystem
+cd /mnt
+find . -type f | grep filesystem.squashfs
+cp filesystem.squashf /home/user/
+cd /home/user/
 ```
-Затем создаем контейнер:
+Устанавливаем пакет и извлеаем файловую систему:
 ``` bash
-sudo docker import filesystem.tar.gz sys:1.0
+mkdir filesys
+sudo unsquashfs -f -d filesys filesystem.squashfs
+```
+Создаём docker и запускаем:
+``` bash
+sudo tar -C filesys -c . | sudo docker import - foma/sys:1.0
+sudo docker run -it foma/sys:1.0 /bin/bash
 ```
