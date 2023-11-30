@@ -17,6 +17,7 @@
 * [Создать docker контейнер на базе vmdk](https://github.com/FooMaa/General-issues/blob/main/docker/create-docker-container.md)
 * [Создать docker контейнер уже имеющейся системы](https://github.com/FooMaa/General-issues/blob/main/docker/create-docker-from-linux.md)
 * [Docker полезные команды](https://github.com/FooMaa/General-issues/blob/main/docker/docker-helper.md)
+* [Создать docker контейнер из iso образа системы](https://github.com/FooMaa/General-issues/blob/main/docker/create_docker_from_iso.md)
 ## Java
 ### Maven
 * [MAVEN установка с репозитория и обновление до последней версии](https://github.com/FooMaa/General-issues/blob/main/java/maven/maven-install.md)
