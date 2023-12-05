@@ -26,5 +26,6 @@ sudo docker push <репозиторий> #может можно и <репоз�
 # Скопировать что-то на запущенный контейнер
 sudo docker cp ./Local_file <container_id>:/path
 # Скопировать что-то из запущенного контейнера
-sudo docker cp <container_id>:/path ./local_path
+sudo docker cp <container_id>:/path ./local_file
+sudo docker cp <container_id>:/path ./local_dir/.
 ```
