@@ -24,5 +24,5 @@
 * [MAVEN сборка и запуск проекта из bash консоли](https://github.com/FooMaa/General-issues/blob/main/java/maven/maven-build-run.md)
 ## Scripts
 | Скрипт | Описание |
-| --------- | -------------------------------------------------------------- |
+| ------ | -------- |
 | [create_current_sys_container.sh](https://github.com/FooMaa/General-issues/blob/main/scripts/create_current_sys_container.sh) | Собирает Docker-контейнер на базе текущей системы (для Linux подобных систем) |
